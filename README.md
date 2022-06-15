@@ -5,7 +5,7 @@
 - implement the CAPTCHA image/text preprocessing script
 
 ###### Current Metrics
-[metrics image](metrics.png)
+![metrics image](metrics.png)
 
 ## Setting up Anaconda for project
 - install anaconda -> https://www.anaconda.com/products/distribution

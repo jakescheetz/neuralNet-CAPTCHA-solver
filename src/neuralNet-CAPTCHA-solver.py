@@ -151,7 +151,7 @@ predictedText = "".join(predictions)
 print("Neural Network has guessed: {}".format(predictedText))
 
 # debugging
-print("CAPTCHA text actually is: {}".format(captcha.split("\\")[-1].split(".")[0]))
+print("CAPTCHA text actually is: {}".format(captcha.split("/")[-1].split(".")[0]))
 
 
 

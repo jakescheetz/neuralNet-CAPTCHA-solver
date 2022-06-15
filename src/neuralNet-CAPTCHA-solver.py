@@ -42,6 +42,7 @@ captcha_processing_output_folder = "extracted-letter-images"
 
 images = []
 labels = []
+predictions = []
 
 num_classes = 32
 # --------------
@@ -130,6 +131,27 @@ NN_model.fit(
 # ideally this will be converted to logic to solve the observed captcha
 captcha = "captcha-images/NZH2.png"
 
+# captcha processing
+captchaLabel = getCAPTCHALabel(captcha)
+gray, letterBoundingRects = captchaToGrayscale(captcha)
+
+# using neural network to predict the label
+for letterBoundingRect in letterBoundingRects:
+    x, y, w, h = letterBoundingRect
+    letterImage = gray[y - 2 : y + h + 2, x - 2 : x + w + 2]
+    letterImage = resizeImage(letterImage, 20, 20)
+    letterImage = np.expand_dims(letterImage, axis=2)
+    letterImage = np.expand_dims(letterImage, axis=0)
+    prediction = NN_model.predict(letterImage)
+    letter = label_binarizer.inverse_transform(prediction)[0]
+    predictions.append(letter)
+
+# print result
+predictedText = "".join(predictions)
+print("Neural Network has guessed: {}".format(predictedText))
+
+# debugging
+print("CAPTCHA text actually is: {}".format(captcha.split("\\")[-1].split(".")[0]))
 
 
 

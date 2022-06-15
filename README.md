@@ -6,6 +6,8 @@
 
 ###### Current Metrics
 ![metrics image](metrics.png)
+- 0.5% loss
+- 99.7% accurate
 
 ## Setting up Anaconda for project
 - install anaconda -> https://www.anaconda.com/products/distribution
